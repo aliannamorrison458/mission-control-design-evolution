@@ -1,0 +1,94 @@
+# Mission Control Bootstrap Template (AI-First / One-Person Company)
+# Fill values and apply manually through UI/API.
+
+organization:
+  name: "<company-name>"
+
+board_groups:
+  - slug: growth
+    name: Growth
+    description: Demand generation and audience growth.
+  - slug: sales
+    name: Sales
+    description: Pipeline progression and close.
+  - slug: delivery
+    name: Delivery
+    description: Customer delivery, quality, and success.
+  - slug: ops-finance
+    name: Ops/Finance
+    description: Operating stability, cashflow, and automation.
+
+boards:
+  - group: growth
+    slug: content-engine
+    name: Content Engine
+    objective: "Generate qualified inbound demand every week."
+    success_metrics:
+      weekly_published_assets: ">= 5"
+      mql_per_week: ">= 20"
+      cpl_trend: "downward"
+  - group: growth
+    slug: lead-engine
+    name: Lead Engine
+    objective: "Convert attention to qualified opportunities."
+    success_metrics:
+      response_rate: ">= 12%"
+      booked_calls_per_week: ">= 6"
+      lead_to_sql_days: "<= 5"
+
+  - group: sales
+    slug: pipeline
+    name: Pipeline
+    objective: "Move active opportunities to decision."
+    success_metrics:
+      stage_progression_rate: ">= 60%"
+      stale_deals_over_7d: "<= 10%"
+      forecast_accuracy: ">= 80%"
+  - group: sales
+    slug: proposal-closing
+    name: Proposal & Closing
+    objective: "Increase conversion and reduce close time."
+    success_metrics:
+      proposal_to_close_rate: ">= 30%"
+      avg_close_cycle_days: "<= 14"
+      discount_leakage: "<= 5%"
+
+  - group: delivery
+    slug: client-delivery
+    name: Client Delivery
+    objective: "Deliver on-time outcomes with verifiable quality."
+    success_metrics:
+      on_time_delivery_rate: ">= 90%"
+      first_pass_acceptance: ">= 85%"
+      avg_rework_hours: "downward"
+
+  - group: ops-finance
+    slug: cashflow
+    name: Cashflow
+    objective: "Protect runway and accelerate collections."
+    success_metrics:
+      dso_days: "<= 21"
+      runway_months: ">= 6"
+      overdue_receivables_ratio: "<= 10%"
+  - group: ops-finance
+    slug: automation-reliability
+    name: Automation Reliability
+    objective: "Increase automation coverage while keeping reliability high."
+    success_metrics:
+      automation_coverage: ">= 70%"
+      p1_incidents_per_month: "<= 1"
+      mean_time_to_recovery_min: "<= 30"
+
+board_defaults:
+  require_approval_for_done: true
+  require_review_before_done: true
+  comment_required_for_review: true
+  max_agents: 2
+
+agent_topology:
+  per_board:
+    lead_agents: 1
+    worker_agents: 1
+  role_contract:
+    lead: "plan, split, prioritize, unblock, report"
+    worker: "execute, verify, attach evidence"
